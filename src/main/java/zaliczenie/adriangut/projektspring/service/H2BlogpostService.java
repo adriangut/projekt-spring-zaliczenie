@@ -36,6 +36,7 @@ public class H2BlogpostService implements BlogpostService {
         return blogpostRepository.save(blogpostMapper.toEntity(blogpost));
     }
 
+    @Override
     public Blogpost updateBlogpost(Long id, BlogpostDTO blogpost) {
         if (blogpostRepository.findById(id).isPresent()) {
             return blogpostRepository.save(blogpostMapper.toEntity(blogpost));
@@ -43,6 +44,8 @@ public class H2BlogpostService implements BlogpostService {
             throw new NoSuchElementException("Blogpost not found");
         }
     }
+
+    @Override
     public void deleteBlogpost(Long id){
         blogpostRepository.deleteById(id);
     }
